@@ -296,23 +296,31 @@ section h2 {
 /* --- ESTILOS PARA A PÁGINA AUTOR --- */
 
 /* Transforma o botão em fixo permanentemente nesta página */
+/* --- ESTILOS PARA A PÁGINA AUTOR --- */
+
+/* Ajusta o layout para ser vertical e ocupar no mínimo a tela toda */
+body.pagina-autor {
+    padding-top: 170px; /* Empurra o conteúdo para baixo do botão fixo */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Mantém o botão sempre visível abaixo do header */
 .cta-fixo-autor {
     position: fixed;
-    top: 85px; /* Mesma posição que o botão assume na index ao scrollar */
+    top: 85px;
     left: 50%;
     transform: translateX(-50%);
     z-index: 999;
 }
 
 .container-contato {
+    flex: 1; /* Ocupa o espaço entre o topo e o footer */
     display: flex;
     justify-content: center;
-    align-items: flex-start; /* Alinha o card no topo em vez de centralizar no meio da tela */
-    padding-top: 180px; /* Dá espaço para não encostar no header nem no botão fixo */
-    padding-bottom: 50px;
-    padding-left: 20px;
-    padding-right: 20px;
-    min-height: calc(100vh - 115px); /* Ocupa a tela menos a altura aproximada do footer, jogando o footer pro final */
+    align-items: flex-start; /* Evita que o card estique verticalmente */
+    padding: 20px;
 }
 
 .perfil-card {
@@ -324,9 +332,10 @@ section h2 {
     width: 100%;
     text-align: center;
     box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-    height: fit-content; /* Impede que o card estique verticalmente */
+    height: auto; /* O card terá o tamanho exato do conteúdo */
 }
 
+/* Estilos internos do card permanecem iguais */
 .perfil-card h1 {
     color: #fff;
     margin-bottom: 15px;
@@ -336,9 +345,9 @@ section h2 {
 .bio {
     color: #aaa;
     margin-bottom: 30px;
+    line-height: 1.5;
 }
 
-/* Lista de links de contato */
 .links-contato {
     display: flex;
     flex-direction: column;
@@ -357,11 +366,6 @@ section h2 {
     text-decoration: none;
     border: 1px solid transparent;
     transition: all 0.3s ease;
-}
-
-.item-contato i {
-    font-size: 1.2rem;
-    color: #8b0000;
 }
 
 .item-contato:hover {
