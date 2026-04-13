@@ -275,6 +275,94 @@ section h2 {
     bottom: 0; /* A legenda sobe ao passar o mouse */
 }
 
+/* Pagina sobre */
+/* --- AJUSTE DE ALINHAMENTO NA INDEX (HERO SECTION) --- */
+.hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Garante que tudo fique no centro horizontal */
+    text-align: center;
+}
+
+.hero-content p {
+    margin: 0 auto; /* Centraliza o bloco de texto se ele tiver max-width */
+    line-height: 1.6;
+    letter-spacing: 1px;
+    color: #ccc;
+}
+
+/* --- ESTILOS PARA A PÁGINA AUTOR --- */
+
+/* Posicionamento do botão Jogar na página de autor */
+.cta-fixo-autor {
+    display: flex;
+    justify-content: center;
+    padding-top: 100px; /* Espaço para não ficar colado no header */
+    margin-bottom: 50px;
+}
+
+.container-contato {
+    min-height: 60vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.perfil-card {
+    background-color: #1a1a1a;
+    border: 1px solid #8b0000;
+    padding: 40px;
+    border-radius: 8px;
+    max-width: 500px;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.perfil-card h1 {
+    color: #fff;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+
+.bio {
+    color: #aaa;
+    margin-bottom: 30px;
+}
+
+/* Lista de links de contato */
+.links-contato {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.item-contato {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    background-color: #222;
+    padding: 15px;
+    border-radius: 5px;
+    color: #fff;
+    text-decoration: none;
+    border: 1px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.item-contato i {
+    font-size: 1.2rem;
+    color: #8b0000;
+}
+
+.item-contato:hover {
+    background-color: #2a2a2a;
+    border-color: #8b0000;
+    transform: translateY(-3px);
+}
+
 /* --- RODAPÉ --- */
 footer {
     text-align: center;
