@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FinalWave - Sobrevivência Infinita</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css?v=8">
+    <link rel="icon" href="imgs/fw.png" type="image/x-icon">
 </head>
 <body>
 
@@ -12,7 +13,7 @@
         <div class="logo">FINAL<span>WAVE</span></div>
         <nav>
             <ul>
-                <li><a href="#jogar">Jogar</a></li>
+                <li><a href="index.html">Home</a></li>
                 <li><a href="#sobre">Sobre o Jogo</a></li>
                 <li><a href="autor.html">Autor e Contato</a></li>
             </ul>
@@ -20,21 +21,55 @@
     </header>
 
     <section id="inicio" class="hero">
+        <div class="hero-bg hero-bg-a" aria-hidden="true"></div>
+        <div class="hero-bg hero-bg-b" aria-hidden="true"></div>
         <div class="hero-content">
             <h1>SOBREVIVA ÀS HORDAS</h1>
             <p>Prove a si mesmo lutando contra infinitas hordas de zumbis.</p>
-        </div>
         
-        <div id="btn-container" class="cta-container">
-            <a href="#jogar" class="btn-jogar">JOGAR AGORA</a>
+        
+            <div id="btn-container" class="cta-container">
+                <a href="game/index.html" target="_blank" class="btn-jogar">JOGAR AGORA</a>
+            </div>
         </div>
     </section>
 
-    <section id="jogar" class="secao-jogo">
-        <h2>SOBRE O JOGO</h2>
-        <div class="iframe-container">
-            <p class="placeholder-texto">Iframe do Construct3.</p>
+    <section id="jogar" class="secao-comandos">
+        <h2>MANUAL DE SOBREVIVÊNCIA</h2>
+        
+        <div class="grid-guia">
+            <div class="bloco-guia">
+                <h3>CONTROLES</h3>
+                <div class="controle-item">
+                    <span class="tecla">WASD</span>
+                    <p>Movimentação do Personagem</p>
+                </div>
+                <div class="controle-item">
+                    <span class="tecla">MOUSE</span>
+                    <p>Mira em 360° e Disparo</p>
+                </div>
+                <div class="controle-item">
+                    <span class="tecla">TAB</span>
+                    <p>Menu de Pausa / Voltar para a tela de início</p>
+                </div>
             </div>
+
+            <div class="bloco-guia">
+                <h3>SISTEMA DE JOGO</h3>
+                <div class="mecanica-card">
+                    <h4>LOOT DE ELIMINAÇÃO</h4>
+                    <p>Zumbis mortos soltam recursos. Colete para recuperar <strong>Vida</strong> e <strong>Munição</strong>.</p>
+                </div>
+                <div class="mecanica-card">
+                    <h4>GERENCIAMENTO DE PENTES</h4>
+                    <p>Cada pente contém <strong>25 balas</strong>. Atire com precisão para não ficar exposto.</p>
+                </div>
+                <div class="mecanica-card">
+                    <h4>SCORE INFINITO</h4>
+                    <p>Não há fim. O objetivo é a glória eterna no ranking através do massacre infinito, com hordas que aumentam a cada onda.</p>
+                </div>
+            </div>
+        </div>
     </section>
 
     <section id="sobre" class="secao-sobre">
@@ -80,6 +115,6 @@
         <p>&copy; 2026 Filipe Albring. Todos os direitos reservados.</p>
     </footer>
 
-    <script src="javascript/script.js"></script>
+    <script src="javascript/script.js?v=3"></script>
 </body>
 </html>
