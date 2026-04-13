@@ -9,8 +9,9 @@
 /* Habilita o scroll suave ao clicar nos links do menu */
 html {
     scroll-behavior: smooth;
-    background-color: #0a0a0a; /* Fundo quase preto */
+    background-color: #0a0a0a;
     color: #e0e0e0;
+    scroll-padding-top: 70px; /* Força a âncora a parar abaixo do menu */
 }
 
 /* --- HEADER / MENU --- */
@@ -291,22 +292,27 @@ section h2 {
     color: #ccc;
 }
 
+
 /* --- ESTILOS PARA A PÁGINA AUTOR --- */
 
-/* Posicionamento do botão Jogar na página de autor */
+/* Transforma o botão em fixo permanentemente nesta página */
 .cta-fixo-autor {
-    display: flex;
-    justify-content: center;
-    padding-top: 100px; /* Espaço para não ficar colado no header */
-    margin-bottom: 50px;
+    position: fixed;
+    top: 85px; /* Mesma posição que o botão assume na index ao scrollar */
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 999;
 }
 
 .container-contato {
-    min-height: 60vh;
     display: flex;
     justify-content: center;
-    align-items: center;
-    padding: 20px;
+    align-items: flex-start; /* Alinha o card no topo em vez de centralizar no meio da tela */
+    padding-top: 180px; /* Dá espaço para não encostar no header nem no botão fixo */
+    padding-bottom: 50px;
+    padding-left: 20px;
+    padding-right: 20px;
+    min-height: calc(100vh - 115px); /* Ocupa a tela menos a altura aproximada do footer, jogando o footer pro final */
 }
 
 .perfil-card {
@@ -318,6 +324,7 @@ section h2 {
     width: 100%;
     text-align: center;
     box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    height: fit-content; /* Impede que o card estique verticalmente */
 }
 
 .perfil-card h1 {
@@ -371,4 +378,5 @@ footer {
     color: #555;
     font-size: 0.9rem;
     border-top: 1px solid #111;
+    width: 100%;
 }
