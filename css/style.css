@@ -1,37 +1,36 @@
-/* Padronizar margens em diferentes navegadores */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* provavelmente será trocado depois */
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
 :root {
     --fonte-titulo: "Agency FB", "Arial Narrow", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    --hero-top-offset: 70px;
+    --cta-top-offset: 85px;
 }
 
-/* Habilita o scroll suave ao clicar nos links do menu */
 html {
     scroll-behavior: smooth;
     background-color: #0a0a0a;
     color: #e0e0e0;
-    scroll-padding-top: 70px; /* Força a âncora a parar abaixo do menu */
+    scroll-padding-top: var(--hero-top-offset);
 }
 
-/* --- HEADER / MENU --- */
 #menu-superior {
-    position: fixed; /* Fixa no topo */
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 70px;
     background-color: #111;
-    border-bottom: 2px solid #8b0000; /* Linha vermelho sangue */
+    border-bottom: 2px solid #8b0000;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 0 40px;
-    z-index: 1000; /* Garante que fique acima dos outros elementos */
+    z-index: 1000;
 }
 
 .logo {
@@ -49,7 +48,6 @@ h2,
 h3,
 h4,
 .btn-jogar,
-.btn-gigante,
 .legenda {
     font-family: var(--fonte-titulo);
 }
@@ -60,7 +58,7 @@ h4,
     font-weight: inherit;
     letter-spacing: inherit;
     line-height: inherit;
-    color: #8b0000; /* Destaque vermelho na palavra WAVE */
+    color: #8b0000;
 }
 
 nav ul {
@@ -87,9 +85,8 @@ nav ul li a:hover {
     color: #8b0000;
 }
 
-/* --- PRIMEIRA TELA (HERO) --- */
 .hero {
-    height: 100vh; /* Ocupa 100% da altura da tela */
+    height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -104,7 +101,7 @@ nav ul li a:hover {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    padding-top: 70px; /* Compensa a altura do header fixo */
+    padding-top: var(--hero-top-offset);
 }
 
 .hero-bg {
@@ -122,38 +119,46 @@ nav ul li a:hover {
     opacity: 1;
 }
 
+.hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
 .hero-content h1 {
     font-size: 4rem;
     text-transform: uppercase;
     margin-bottom: 10px;
     line-height: 0.95;
     text-align: center;
-    text-shadow: 2px 2px 5px rgba(0,0,0,0.8);
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
 }
 
 .hero-content p {
     font-size: 1.2rem;
-    color: #aaa;
+    margin: 0 auto;
+    max-width: 720px;
+    line-height: 1.6;
+    letter-spacing: 1px;
     text-align: center;
-    /*max-width: 600px;*/ /* estava atrapalhando a centralização do texto */
-
+    color: #ccc;
 }
 
-/* --- BOTÃO JOGAR --- */
-/* --- BOTÃO JOGAR --- */
 .cta-container {
     width: 100%;
-    margin-top: 32px; /* Mantém o botão logo abaixo da descrição */
-    min-height: 64px; /* Reserva espaço quando o botão ficar fixo */
+    margin-top: 32px;
+    min-height: 64px;
     display: flex;
     justify-content: center;
     align-items: flex-start;
 }
 
-/* Agora aplicamos o fixed diretamente no botão, não no container inteiro */
 .cta-container.fixado-topo .btn-jogar {
     position: fixed;
-    top: 85px; 
+    top: var(--cta-top-offset);
     left: 50%;
     transform: translateX(-50%);
     z-index: 999;
@@ -161,7 +166,7 @@ nav ul li a:hover {
 
 .btn-jogar {
     background-color: #8b0000;
-    color: white;
+    color: #fff;
     padding: 15px 40px;
     font-size: 1.5rem;
     font-weight: 900;
@@ -188,7 +193,6 @@ nav ul li a:hover {
     transform: translateX(-50%) scale(1.05);
 }
 
-/* --- SEÇÕES: JOGAR E SOBRE --- */
 section {
     min-height: 100vh;
     padding: 100px 20px;
@@ -207,42 +211,6 @@ section h2 {
     line-height: 1;
 }
 
-/* Área reservada para o iframe do Construct 3 */
-.secao-jogo {
-    background-color: #0f0f0f;
-}
-
-/* --- NOVA ÁREA DE JOGO (Link Direto) --- */
-.jogar-direto-container {
-    background-color: #1a1a1a;
-    border: 1px solid #2a2a2a;
-    padding: 60px 40px;
-    border-radius: 8px;
-    text-align: center;
-    max-width: 600px;
-    width: 100%;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-}
-
-.jogar-direto-container p {
-    color: #aaa;
-    font-size: 1.1rem;
-    margin-bottom: 30px;
-    line-height: 1.5;
-}
-
-.btn-gigante {
-    font-size: 1.8rem;
-    padding: 20px 50px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    line-height: 1;
-    gap: 15px;
-}
-
-/* --- SEÇÃO DE COMANDOS E MECÂNICAS --- */
 .secao-comandos {
     background-color: #0f0f0f;
     padding: 100px 20px;
@@ -265,7 +233,6 @@ section h2 {
     padding-left: 15px;
 }
 
-/* Estilo das Teclas */
 .controle-item {
     display: flex;
     align-items: center;
@@ -290,7 +257,6 @@ section h2 {
     text-align: center;
 }
 
-/* Cards de Mecânicas */
 .mecanica-card {
     background: #1a1a1a;
     padding: 20px;
@@ -317,12 +283,6 @@ section h2 {
     color: #8b0000;
 }
 
-.placeholder-texto {
-    color: #444;
-    font-style: italic;
-}
-
-/* Cards informativos na seção sobre */
 .secao-sobre {
     background-color: #141414;
 }
@@ -331,7 +291,7 @@ section h2 {
     display: flex;
     gap: 30px;
     max-width: 1000px;
-    flex-wrap: wrap; /* Permite quebrar linha em telas menores */
+    flex-wrap: wrap;
     justify-content: center;
 }
 
@@ -366,10 +326,9 @@ section h2 {
     box-shadow: 0 0 18px rgba(139, 0, 0, 0.22);
 }
 
-/* --- GALERIA DE INSPIRAÇÕES --- */
 .inspiracoes-header {
     text-align: center;
-    margin-top: 60px; /* Separa dos cards de texto */
+    margin-top: 60px;
     margin-bottom: 30px;
     width: 100%;
 }
@@ -401,37 +360,34 @@ section h2 {
     background-color: #000;
     border: 2px solid #2a2a2a;
     border-radius: 5px;
-    overflow: hidden; /* Garante que a imagem não vaze ao dar zoom */
+    overflow: hidden;
     flex: 1;
-    min-width: 280px; /* Largura mínima para telas menores */
-    height: 200px; /* Altura fixa para manter o padrão */
-    cursor: crosshair; /* Cursor agressivo combinando com o tema shooter */
+    min-width: 280px;
+    height: 200px;
+    cursor: crosshair;
 }
 
-/* Configuração da imagem dentro do card */
 .card-img img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Corta a imagem para preencher o espaço sem distorcer */
+    object-fit: cover;
     transition: transform 0.3s ease, opacity 0.3s ease;
-    opacity: 0.7; /* Imagem um pouco escura por padrão */
+    opacity: 0.7;
 }
 
-/* Efeito ao passar o mouse (Hover) */
 .card-img:hover img {
-    transform: scale(1.1); /* Zoom de 10% */
-    opacity: 1; /* Revela a cor original */
+    transform: scale(1.1);
+    opacity: 1;
 }
 
 .card-img:hover {
-    border-color: #8b0000; /* Borda fica vermelha */
+    border-color: #8b0000;
     box-shadow: 0 0 15px rgba(139, 0, 0, 0.3);
 }
 
-/* Legenda sobre a imagem */
 .legenda {
     position: absolute;
-    bottom: -40px; /* Esconde a legenda inicialmente */
+    bottom: -40px;
     left: 0;
     width: 100%;
     background: rgba(0, 0, 0, 0.8);
@@ -441,60 +397,32 @@ section h2 {
     font-weight: bold;
     text-transform: uppercase;
     border-top: 1px solid #8b0000;
-    transition: bottom 0.3s ease; /* Animação de subida */
+    transition: bottom 0.3s ease;
 }
 
 .card-img:hover .legenda {
-    bottom: 0; /* A legenda sobe ao passar o mouse */
+    bottom: 0;
 }
 
-/* Pagina sobre */
-/* --- AJUSTE DE ALINHAMENTO NA INDEX (HERO SECTION) --- */
-.hero-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Garante que tudo fique no centro horizontal */
-    text-align: center;
-    position: relative;
-    z-index: 1;
-}
-
-.hero-content p {
-    margin: 0 auto; /* Centraliza o bloco de texto se ele tiver max-width */
-    max-width: 720px;
-    line-height: 1.6;
-    letter-spacing: 1px;
-    color: #ccc;
-}
-
-
-/* --- ESTILOS PARA A PÁGINA AUTOR --- */
-
-/* Transforma o botão em fixo permanentemente nesta página */
-/* --- ESTILOS PARA A PÁGINA AUTOR --- */
-
-/* Ajusta o layout para ser vertical e ocupar no mínimo a tela toda */
 body.pagina-autor {
-    padding-top: 170px; /* Empurra o conteúdo para baixo do botão fixo */
+    padding-top: calc(var(--cta-top-offset) + 85px);
     display: flex;
     flex-direction: column;
     min-height: 100vh;
 }
 
-/* Mantém o botão sempre visível abaixo do header */
 .cta-fixo-autor {
     position: fixed;
-    top: 85px;
+    top: var(--cta-top-offset);
     left: 50%;
     transform: translateX(-50%);
     z-index: 999;
 }
 
 .container-contato {
-    flex: 1; /* Ocupa o espaço entre o topo e o footer */
     display: flex;
     justify-content: center;
-    align-items: flex-start; /* Evita que o card estique verticalmente */
+    align-items: flex-start;
     padding: 20px;
 }
 
@@ -506,11 +434,10 @@ body.pagina-autor {
     max-width: 500px;
     width: 100%;
     text-align: center;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-    height: auto; /* O card terá o tamanho exato do conteúdo */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    height: auto;
 }
 
-/* Estilos internos do card permanecem iguais */
 .perfil-card h1 {
     color: #fff;
     margin-bottom: 15px;
@@ -550,7 +477,6 @@ body.pagina-autor {
     transform: translateY(-3px);
 }
 
-/* --- RODAPÉ --- */
 footer {
     text-align: center;
     padding: 30px;
@@ -561,17 +487,14 @@ footer {
     width: 100%;
 }
 
-body.pagina-autor .container-contato {
-    flex: 0 0 auto;
-}
-
 body.pagina-autor footer {
     margin-top: auto;
 }
 
 @media (max-width: 640px) {
-    html {
-        scroll-padding-top: 118px;
+    :root {
+        --hero-top-offset: 118px;
+        --cta-top-offset: 133px;
     }
 
     #menu-superior {
@@ -601,24 +524,7 @@ body.pagina-autor footer {
     }
 
     nav ul li a {
-        display: flex;
-        align-items: center;
-        justify-content: center;
         font-size: 12px;
         line-height: 1.15;
-        text-align: center;
-    }
-
-    .hero {
-        padding-top: 118px;
-    }
-
-    .cta-container.fixado-topo .btn-jogar,
-    .cta-fixo-autor {
-        top: 133px;
-    }
-
-    body.pagina-autor {
-        padding-top: 218px;
     }
 }
