@@ -3,8 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        (function () {
+            try {
+                if (localStorage.getItem('finalwave-theme') === 'light') {
+                    document.documentElement.setAttribute('data-theme', 'light');
+                }
+            } catch (error) {}
+        }());
+    </script>
     <title>Autor e Contato - FinalWave</title>
-    <link rel="stylesheet" href="css/style.css?v=9">
+    <link rel="stylesheet" href="css/style.css?v=10">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="icon" href="imgs/fw.png" type="image/png">
 </head>
@@ -12,13 +21,19 @@
 
     <header id="menu-superior">
         <div class="logo">FINAL<span>WAVE</span></div>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="index.html#sobre">Sobre o Jogo</a></li>
-                <li><a href="autor.html">Autor e Contato</a></li>
-            </ul>
-        </nav>
+        <div class="header-actions">
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#sobre">Sobre o Jogo</a></li>
+                    <li><a href="autor.html">Autor e Contato</a></li>
+                </ul>
+            </nav>
+            <button class="theme-toggle" type="button" data-theme-toggle aria-label="Alternar entre tema escuro e claro" aria-pressed="false">
+                <span class="theme-toggle__indicator" aria-hidden="true"></span>
+                <span class="theme-toggle__label" data-theme-label>MODO CLARO</span>
+            </button>
+        </div>
     </header>
 
     <div class="cta-fixo-autor">
@@ -54,6 +69,6 @@
         <p>&copy; 2026 Filipe Albring. Todos os direitos reservados.</p>
     </footer>
 
-    <script src="javascript/script.js?v=9"></script>
+    <script src="javascript/script.js?v=10"></script>
 </body>
 </html>

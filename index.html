@@ -3,21 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        (function () {
+            try {
+                if (localStorage.getItem('finalwave-theme') === 'light') {
+                    document.documentElement.setAttribute('data-theme', 'light');
+                }
+            } catch (error) {}
+        }());
+    </script>
     <title>FinalWave - Sobrevivência Infinita</title>
-    <link rel="stylesheet" href="css/style.css?v=9">
+    <link rel="stylesheet" href="css/style.css?v=10">
     <link rel="icon" href="imgs/fw.png" type="image/png">
 </head>
 <body>
 
     <header id="menu-superior">
         <div class="logo">FINAL<span>WAVE</span></div>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="#sobre">Sobre o Jogo</a></li>
-                <li><a href="autor.html">Autor e Contato</a></li>
-            </ul>
-        </nav>
+        <div class="header-actions">
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#sobre">Sobre o Jogo</a></li>
+                    <li><a href="autor.html">Autor e Contato</a></li>
+                </ul>
+            </nav>
+            <button class="theme-toggle" type="button" data-theme-toggle aria-label="Alternar entre tema escuro e claro" aria-pressed="false">
+                <span class="theme-toggle__indicator" aria-hidden="true"></span>
+                <span class="theme-toggle__label" data-theme-label>MODO CLARO</span>
+            </button>
+        </div>
     </header>
 
     <section id="inicio" class="hero">
@@ -72,6 +87,13 @@
         </div>
     </section>
 
+    <section class="secao-sobrevivente">
+        <h2>O Sobrevivente</h2>
+        <div class="sobrevivente-conteudo">
+            <p>Em um cenário pós-apocalíptico, o jogador assume o papel do último Sobrevivente na defesa de um posto avançado, enfrentando a "onda final" de mortos-vivos que assolam a humanidade no meio de uma grande avenida, num campo aberto, propenso para a chegada de vários zumbis. O barulho causado por sua arma chama a atenção de hordas de zumbis constantemente, O Sobrevivente aproveita disso para desviar a atenção dos zumbis, impedindo que eles ataquem o posto avançado.</p>
+        </div>
+    </section>
+
     <section id="sobre" class="secao-sobre">
         <h2>SOBRE FINALWAVE</h2>
         <div class="cards-container">
@@ -115,6 +137,6 @@
         <p>&copy; 2026 Filipe Albring. Todos os direitos reservados.</p>
     </footer>
 
-    <script src="javascript/script.js?v=9"></script>
+    <script src="javascript/script.js?v=10"></script>
 </body>
 </html>
