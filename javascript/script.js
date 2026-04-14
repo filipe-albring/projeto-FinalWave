@@ -1,4 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
+    const storageKeyTema = 'finalwave-theme';
+    const root = document.documentElement;
+    const themeToggles = document.querySelectorAll('[data-theme-toggle]');
     const btnContainer = document.getElementById('btn-container');
     const header = document.getElementById('menu-superior');
     const heroSection = document.getElementById('inicio');
@@ -19,12 +22,47 @@ document.addEventListener('DOMContentLoaded', () => {
     let ultimoFundo = '';
     let indiceLayerAtiva = 0;
 
+    function lerTemaSalvo() {
+        try {
+            const tema = window.localStorage.getItem(storageKeyTema);
+
+            if (tema === 'light' || tema === 'dark') {
+                return tema;
+            }
+        } catch (error) {}
+
+        return root.dataset.theme === 'light' ? 'light' : 'dark';
+    }
+
+    function salvarTema(tema) {
+        try {
+            window.localStorage.setItem(storageKeyTema, tema);
+        } catch (error) {}
+    }
+
+    function atualizarBotoesTema(temaAtual) {
+        const proximoTema = temaAtual === 'light' ? 'dark' : 'light';
+        const proximoRotulo = proximoTema === 'light' ? 'MODO CLARO' : 'MODO ESCURO';
+        const proximoTitulo = proximoTema === 'light' ? 'Ativar tema claro' : 'Ativar tema escuro';
+
+        themeToggles.forEach((toggle) => {
+            const label = toggle.querySelector('[data-theme-label]');
+
+            toggle.setAttribute('aria-pressed', String(temaAtual === 'light'));
+            toggle.setAttribute('title', proximoTitulo);
+
+            if (label) {
+                label.textContent = proximoRotulo;
+            }
+        });
+    }
+
     function atualizarOffsetHeader() {
         if (!header) return;
 
         const limiteFixacao = header.offsetHeight + distanciaHeader;
-        document.documentElement.style.setProperty('--cta-top-offset', `${limiteFixacao}px`);
-        document.documentElement.style.setProperty('--hero-top-offset', `${header.offsetHeight}px`);
+        root.style.setProperty('--cta-top-offset', `${limiteFixacao}px`);
+        root.style.setProperty('--hero-top-offset', `${header.offsetHeight}px`);
     }
 
     function checarPosicaoBotao() {
@@ -41,7 +79,39 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function montarBackgroundHero(caminhoFundo) {
-        return `linear-gradient(rgba(10, 10, 10, 0.35), rgba(10, 10, 10, 0.72)), url("${caminhoFundo}")`;
+        const estilos = getComputedStyle(root);
+        const overlayTopo = estilos.getPropertyValue('--hero-overlay-top').trim();
+        const overlayBase = estilos.getPropertyValue('--hero-overlay-bottom').trim();
+
+        return `linear-gradient(${overlayTopo}, ${overlayBase}), url("${caminhoFundo}")`;
+    }
+
+    function sincronizarFundoHeroComTema() {
+        if (!heroSection || !ultimoFundo) return;
+
+        if (heroBgLayers.length < 2) {
+            heroSection.style.backgroundImage = montarBackgroundHero(ultimoFundo);
+            return;
+        }
+
+        const layerAtiva = heroBgLayers[indiceLayerAtiva];
+
+        if (layerAtiva) {
+            layerAtiva.style.backgroundImage = montarBackgroundHero(ultimoFundo);
+        }
+    }
+
+    function aplicarTema(tema, salvarPreferencia = true) {
+        const temaNormalizado = tema === 'light' ? 'light' : 'dark';
+
+        root.dataset.theme = temaNormalizado;
+        root.style.colorScheme = temaNormalizado;
+        atualizarBotoesTema(temaNormalizado);
+        sincronizarFundoHeroComTema();
+
+        if (salvarPreferencia) {
+            salvarTema(temaNormalizado);
+        }
     }
 
     function aplicarFundoHero(caminhoFundo) {
@@ -106,6 +176,15 @@ document.addEventListener('DOMContentLoaded', () => {
             imagem.src = fundo;
         });
     }
+
+    aplicarTema(lerTemaSalvo(), false);
+
+    themeToggles.forEach((toggle) => {
+        toggle.addEventListener('click', () => {
+            const proximoTema = root.dataset.theme === 'light' ? 'dark' : 'light';
+            aplicarTema(proximoTema);
+        });
+    });
 
     atualizarOffsetHeader();
     window.addEventListener('scroll', checarPosicaoBotao);
