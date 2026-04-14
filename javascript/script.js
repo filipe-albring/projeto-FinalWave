@@ -19,6 +19,14 @@ document.addEventListener('DOMContentLoaded', () => {
     let ultimoFundo = '';
     let indiceLayerAtiva = 0;
 
+    function atualizarOffsetHeader() {
+        if (!header) return;
+
+        const limiteFixacao = header.offsetHeight + distanciaHeader;
+        document.documentElement.style.setProperty('--cta-top-offset', `${limiteFixacao}px`);
+        document.documentElement.style.setProperty('--hero-top-offset', `${header.offsetHeight}px`);
+    }
+
     function checarPosicaoBotao() {
         if (!btnContainer || !header) return;
 
@@ -99,10 +107,17 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    precarregarFundos();
-    definirFundoInicial();
+    atualizarOffsetHeader();
     window.addEventListener('scroll', checarPosicaoBotao);
-    window.addEventListener('resize', checarPosicaoBotao);
+    window.addEventListener('resize', () => {
+        atualizarOffsetHeader();
+        checarPosicaoBotao();
+    });
     checarPosicaoBotao();
-    window.setInterval(sortearNovoFundo, intervaloTrocaMs);
+
+    if (heroSection) {
+        precarregarFundos();
+        definirFundoInicial();
+        window.setInterval(sortearNovoFundo, intervaloTrocaMs);
+    }
 });
